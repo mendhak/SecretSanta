@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/slowmonkey/SecretSanta#readme",
   "dependencies": {
+    "angular-ui-router": "^0.2.15",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "method-override": "^2.3.5",

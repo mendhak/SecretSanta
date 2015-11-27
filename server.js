@@ -22,9 +22,9 @@
     app.use(methodOverride());
 
     // define model =================
-    var SecretSanta = mongoose.model('SecretSanta', {
-        organiserEmail: String
-    });
+    // var SecretSanta = mongoose.model('SecretSanta', {
+    //     organiserEmail: String
+    // });
 
     // listen (start app with node server.js) ======================================
     app.listen(8080);

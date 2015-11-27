@@ -1,22 +1,22 @@
 'use strict';
-
 angular.module('ssMainPage', []);
 
 var secretSantaApp = angular
     .module('secretSantaApp', [
-        'ngRoute',
+        'ui.router',
         'ssMainPage'
     ])
-    .config(['$routeProvider',
-        function($routeProvider) {
-            $routeProvider.
-            when('/', {
-                    templateUrl: 'mainPage/main.html',
-                    controllerAs: 'main',
-                    controller: 'MainController'
-                })
-                .otherwise({
-                    redirectTo: '/'
-                })
-        }
-    ]);
+    .config(
+        ['$stateProvider', '$urlRouterProvider',
+            function($stateProvider, $urlRouterProvider) {
+                $urlRouterProvider.otherwise("/");
+
+                $stateProvider
+                    .state('secretSanta', {
+                        url: '/',
+                        templateUrl: 'mainPage/main.html',
+                        controller: 'MainController',
+                        controllerAs: 'mainController'
+                    });
+            }
+        ]);
