@@ -1,9 +1,7 @@
-"use strict";
+'use strict';
 
-var mainController = function() {
+angular.module('ssMainPage').controller('MainController', function() {
     this.registerNewOrganiser = function() {
         console.log("registerNewOrganiser" + new Date());
     };
-};
-
-angular.module('ssMainPage').controller('MainController', mainController);
+});
