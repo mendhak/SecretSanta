@@ -16,7 +16,7 @@ var secretSantaApp = angular
                         url: '/',
                         templateUrl: 'mainPage/main.html',
                         controller: 'MainController',
-                        controllerAs: 'mainController'
+                        controllerAs: 'main'
                     });
             }
         ]);

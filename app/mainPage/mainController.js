@@ -10,7 +10,7 @@
 
 var mainController = function() {
     this.registerNewOrganiser = function() {
-        alert('hello');
+        console.log("registerNewOrganiser" + new Date());
     };
 };
 
