@@ -1,10 +1,15 @@
 'use strict';
-angular.module('ssMainPage', []);
+
+angular.module('ssCommon', []);
+angular.module('ssLayout', []);
+angular.module('ssNiceList', []);
 
 var secretSantaApp = angular
     .module('secretSantaApp', [
         'ui.router',
-        'ssMainPage'
+        'ssCommon',
+        'ssLayout',
+        'ssNiceList'
     ])
     .config(
         ['$stateProvider', '$urlRouterProvider',
@@ -12,11 +17,13 @@ var secretSantaApp = angular
                 $urlRouterProvider.otherwise("/");
 
                 $stateProvider
-                    .state('secretSanta', {
+                    .state('home', {
                         url: '/',
-                        templateUrl: 'mainPage/main.html',
-                        controller: 'MainController',
-                        controllerAs: 'main'
+                        template: '<ss-menu></ss-menu>'
+                    })
+                    .state('createNiceList', {
+                        url: '/createNiceList',
+                        template: '<ss-create-nice-list></ss-create-nice-list>'
                     });
             }
         ]);

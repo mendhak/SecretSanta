@@ -1,40 +1,47 @@
 <!-- index.html -->
 <!doctype html>
-
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="secretSantaApp">
+
 <head>
     <!-- META -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
-
-    <title>Secret Santa App</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Optimize mobile viewport -->
+    <title>Secret Santa Facilitator</title>
     <!-- SCROLLS -->
     <!-- load bootstrap -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="web/css/secretsanta.css">
-    
     <style>
-        html                    { overflow-y:scroll; }
-        body                    { padding-top:50px; }
-        #todo-list              { margin-bottom:30px; }
+    html {
+        overflow-y: scroll;
+    }
+    
+    body {
+        padding-top: 50px;
+    }
+    
+    #todo-list {
+        margin-bottom: 30px;
+    }
     </style>
-
     <!-- SPELLS -->
     <!-- load jquery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-
     <script src="app.js"></script>
-
     <!-- Main Page -->
-    <script src="mainPage/mainController.js"></script>
-
+    <script src="layout/header.js"></script>
+    <script src="layout/menu.js"></script>
+    <script src="niceList/createNiceList.js"></script>
 </head>
+
 <body>
+    <ss-header></ss-header>    
     <div ui-view class="container"></div>
 </body>
+
 </html>
