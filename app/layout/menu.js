@@ -6,8 +6,8 @@ function($state) {
         templateUrl: 'layout/menu.html',
         scope: {},
         link: function($scope) {
-            $scope.createNiceList = function() {
-                $state.go('createNiceList');
+            $scope.createSecretSantaList = function() {
+                $state.go('createSecretSantaList');
             }
         }
     }
