@@ -8,7 +8,7 @@ angular.module('ssLayout').directive('ssMainMenu', ['$state', 'ssMenuOptionModel
                 var registerFacilitator =
                     menuOptionModel.create(
                         function() {
-                            $state.go('facilitator');
+                            $state.go('facilitator.register');
                         },
                         "Register As A Facilitator");
 

@@ -8,7 +8,7 @@
 
     // configuration =================
 
-    mongoose.connect('mongodb://localhost/SecretSanta'); // connect to mongoDB database on modulus.io
+    mongoose.connect('mongodb://localhost/SecretSantaDb'); // connect to mongoDB database on modulus.io
 
     app.use(express.static(__dirname + '/app')); // set the static files location /public/img will be /img for users
     app.use(morgan('dev')); // log every request to the console
@@ -22,9 +22,7 @@
     app.use(methodOverride());
 
     // define model =================
-    // var SecretSanta = mongoose.model('SecretSanta', {
-    //     organiserEmail: String
-    // });
+    var SecretSantaDb = mongoose.model('SecretSantaDb', {});
 
     // listen (start app with node server.js) ======================================
     app.listen(8080);
@@ -52,24 +50,25 @@
     //     });
     // });
 
-    // // create todo and send back all todos after creation
-    // app.post('/api/todos', function(req, res) {
+    // 
+    app.post('/ss-api/facilitator/save', function(req, res) {
+        // SecretSantaDb.find(function(error, ))
 
-    //     // create a todo, information comes from AJAX request from Angular
-    //     Todo.create({
-    //         text: req.body.text,
-    //         done: false
-    //     }, function(err, todo) {
-    //         if (err)
-    //             res.send(err);
+        // // create a todo, information comes from AJAX request from Angular
+        // Todo.create({
+        //     text: req.body.text,
+        //     done: false
+        // }, function(err, todo) {
+        //     if (err)
+        //         res.send(err);
 
-    //         // get and return all the todos after you create another
-    //         Todo.find(function(err, todos) {
-    //             if (err)
-    //                 res.send(err);
-    //             res.json(todos);
-    //         });
-    //     });
+        //     // get and return all the todos after you create another
+        //     Todo.find(function(err, todos) {
+        //         if (err)
+        //             res.send(err);
+        //         res.json(todos);
+        //     });
+    });
 
     // });
 

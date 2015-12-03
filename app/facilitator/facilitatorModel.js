@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('ssLayout').factory('ssFacilitatorModel', function() {
-	function MenuOption(action, text) {
-		this.action = action;
-		this.text = text;
+	function Facilitator() {
+		this.name = "";
+		this.email = "";
+		this.secretSantaLists = [];
 	}
 
 	return {
-		create: function(action, text) {			
-			return new MenuOption(action, text);
+		create: function() {
+			return new Facilitator();
 		}
 	};
 });
