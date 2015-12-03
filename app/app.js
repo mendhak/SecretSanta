@@ -23,7 +23,7 @@ var secretSantaApp = angular
                     })
                     .state('createSecretSantaList', {
                         url: '/createSecretSantaList',
-                        template: '<ss-view-list-of-secret-santas></ss-view-list-of-secret-santas>'
+                        template: '<ss-list-of-secret-santas mode="create"></ss-list-of-secret-santas>'
                     });
             }
         ]);

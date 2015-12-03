@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('ssSecretSanta').directive('ssViewListOfSecretSantas', ['ssListOfSecretSantasService',
+// This 
+angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['ssListOfSecretSantasService',
     function(listOfSecretSantasService) {
         return {
             scope: {
                 //secretSantaList: "="
+                mode: "="
             },
-            templateUrl: 'secretSanta/viewListOfSecretSantas.html',
+            templateUrl: 'secretSanta/listOfSecretSantas.html',
             link: function($scope) {
                 $scope.secretSantaList = listOfSecretSantasService.create();
 

@@ -9,6 +9,14 @@ function($state) {
             $scope.createSecretSantaList = function() {
                 $state.go('createSecretSantaList');
             }
+
+            $scope.manageSecretSantaList = function() {
+            	$state.go('manageSecretSantaList');
+            }
+
+            $scope.viewSecretSantaDetails = function() {
+            	$state.go('viewSecretSantaDetails');
+            }
         }
     }
 }]);

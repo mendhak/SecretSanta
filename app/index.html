@@ -1,7 +1,7 @@
 <!-- index.html -->
 <!doctype html>
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="secretSantaApp">
+<html class="secret-santa-app" ng-app="secretSantaApp">
 
 <head>
     <!-- META -->
@@ -13,19 +13,7 @@
     <!-- load bootstrap -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="web/css/secretsanta.css">
-    <style>
-    html {
-        overflow-y: scroll;
-    }
-    
-    body {
-        padding-top: 50px;
-    }
-    
-    #todo-list {
-        margin-bottom: 30px;
-    }
-    </style>
+
     <!-- SPELLS -->
     <!-- load jquery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -35,12 +23,13 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
 
     <script src="app.js"></script>
-    <!-- Main Page -->
+    <!-- Main Page -->    
     <script src="layout/header.js"></script>
     <script src="layout/menu.js"></script>
+    <script src="layout/menuRow.js"></script>
 
     <script src="secretSanta/createSecretSanta.js"></script>
-    <script src="secretSanta/viewListOfSecretSantas.js"></script>
+    <script src="secretSanta/listOfSecretSantas.js"></script>
     <script src="secretSanta/secretSantaService.js"></script>
     <script src="secretSanta/listOfSecretSantasService.js"></script>
 </head>

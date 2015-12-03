@@ -20,6 +20,7 @@ angular.module('ssSecretSanta').directive('ssCreateSecretSanta',
                     secretSanta.name = $scope.form.name;
                     secretSanta.email = $scope.form.email;
 
+                    // TODO: Validate that the email has not been entered before
 
                     $scope.secretSantaList.add(secretSanta);
 
