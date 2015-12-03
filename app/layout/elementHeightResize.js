@@ -1,6 +1,7 @@
 'use strict';
 
 // Obtained from: http://stackoverflow.com/questions/23044338/window-resize-directive
+
 angular.module('ssLayout').directive('ssElementHeightResize', ['$document', '$window',
     function($document, $window) {
         return {
