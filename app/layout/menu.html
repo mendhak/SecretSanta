@@ -1,5 +1,5 @@
 <div class="text-center menu-options container">
-    <ss-menu-row action="createSecretSantaList()" text="Create Secret Santa List"></ss-menu-row>
-    <ss-menu-row action="manageSecretSantaList()" text="Manage Secret Santa List"></ss-menu-row>
-    <ss-menu-row action="viewSecretSantaDetails()" text="View My Secret Santa Details"></ss-menu-row>
-</div>
+	<div ng-repeat="menuOption in menuOptions">
+		<ss-menu-row text={{menuOption.text}} action="menuOption.action()" ></ss-menu-row>
+	</div>
+ </div>

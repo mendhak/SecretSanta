@@ -1,6 +1,5 @@
 'use strict';
 
-// This 
 angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['ssListOfSecretSantasService',
     function(listOfSecretSantasService) {
         return {
