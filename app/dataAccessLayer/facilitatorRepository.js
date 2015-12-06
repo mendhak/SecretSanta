@@ -1,18 +1,21 @@
 'use strict';
 
-angular.module('ssDataAccessLayer').factory('ssFacilitatorRepository', ['$http',
-    function($http) {
+angular.module('ssDataAccessLayer').factory('ssFacilitatorRepository', ['$http', '$q',
+    function($http, $q) {
         return {
             saveFacilitator: function(facilitatorDetails) {
-            	var success = function() {
+                var deferred = $q.defer();
 
-            	}
+                var success = function(response) {
+                	deferred.resolve(response.data);
+                }
 
-            	var error = function() {
+                var error = function() {
 
-            	}
+                }
 
-                $http.post('/ss-api/facilitator/save', facilitatorDetails).then(success, error);
+				$http.post('/ss-api/facilitator/save', facilitatorDetails).then(success, error);
+                return deferred.promise;
             }
         };
     }

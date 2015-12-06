@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ssLayout').directive('ssFacilitatorMenu', 
-	function() {
+angular.module('ssLayout').directive('ssFacilitatorMenu', ['$state', 'ssMenuOptionModel',
+	function($state, menuOptionModel) {
 		return {
 			templateUrl: 'layout/menu.html',
 			link: function($scope) {
@@ -25,4 +25,4 @@ angular.module('ssLayout').directive('ssFacilitatorMenu',
                 ];
 			}
 		}
-});
+}]);

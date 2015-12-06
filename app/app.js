@@ -42,9 +42,9 @@ var secretSantaApp = angular
                         url: '/register',
                         template: '<ss-register-facilitator></ss-register-facilitator>'
                     })
-                    .state('facilitator.manage', {
+                    .state('facilitator.manager', {
                         url: '/manage',
-                        template: '<ss-facilitator-details mode="edit"></ss-facilitator-details>'
+                        template: '<ss-facilitator-menu></ss-facilitator-menu>'
                     });
             }
         ]);

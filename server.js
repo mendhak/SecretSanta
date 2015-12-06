@@ -52,7 +52,10 @@
 
     // 
     app.post('/ss-api/facilitator/save', function(req, res) {
-        console.log(req.body);
+        var json = {
+            status: 0
+        };
+        res.send(json);
         // SecretSantaDb.find(function(error, ))
 
         // // create a todo, information comes from AJAX request from Angular
