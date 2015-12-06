@@ -17,11 +17,12 @@ angular.module('ssFacilitator').directive('ssRegisterFacilitator', ['$state', 's
                         }
                     };
 
-                    var error = function() {
+                    var error = function(response) {
 	                    // TODO: set error if this is not the case.
+	                    console.log(response);
                     };
 
-                    facilitatorRepository.saveFacilitator(facilitator).then(success, error);
+                    facilitatorRepository.createFacilitator(facilitator).then(success, error);
                 };
 
                 $scope.cancel = function() {

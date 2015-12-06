@@ -21,8 +21,38 @@
     })); // parse application/vnd.api+json as json
     app.use(methodOverride());
 
+    // define schema
+
+    var Schema = mongoose.Schema;
+    var facilitatorSchema = new Schema({
+        _id: ObjectId,
+        name: { type: String, required: true },
+        email: { type: String, required: true, unique: true},        
+        secretSantaLists: [secretSantaListSchema]
+    });
+
+    var secretSantaListSchema = new Schema({
+        _id: ObjectId,
+        isGenerated: Boolean,
+        secretSantas: [secretSantaSchema],
+        secretSantaPairings: [secretSantaPairingsSchema]
+
+    });
+
+    var secretSantaSchema = new Schema({
+        _id: ObjectId,
+        name: { type: String, required: true },
+        email: { type: String, required: true, unique: true}
+    });
+
+    var secretSantaPairingsSchema = new Schema({
+        _id: ObjectId,
+        senderId: { type: ObjectId, required: true },
+        receiverId: { type: ObjectId, required: true }
+    });
+
     // define model =================
-    var SecretSantaDb = mongoose.model('SecretSantaDb', {});
+    var SecretSantaDb = mongoose.model('facilitator', facilitatorSchema);
 
     // listen (start app with node server.js) ======================================
     app.listen(8080);
@@ -51,7 +81,13 @@
     // });
 
     // 
-    app.post('/ss-api/facilitator/save', function(req, res) {
+    app.post('/ss-api/facilitator/create', function(req, res) {
+
+        // Check that the facilitator does not already exist.
+
+        var 
+
+
         var json = {
             status: 0
         };
