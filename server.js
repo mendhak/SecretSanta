@@ -21,38 +21,61 @@
     })); // parse application/vnd.api+json as json
     app.use(methodOverride());
 
-    // define schema
+    // Setting up mongoose types
 
     var Schema = mongoose.Schema;
-    var facilitatorSchema = new Schema({
-        _id: ObjectId,
-        name: { type: String, required: true },
-        email: { type: String, required: true, unique: true},        
-        secretSantaLists: [secretSantaListSchema]
+    var ObjectId = mongoose.Schema.ObjectId;
+
+    // define schema
+
+    var secretSantaSchema = new Schema({
+        // _id: ObjectId,
+        name: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        }
+    });
+
+    var secretSantaPairingsSchema = new Schema({
+        // _id: ObjectId,
+        senderId: {
+            type: ObjectId,
+            required: true
+        },
+        receiverId: {
+            type: ObjectId,
+            required: true
+        }
     });
 
     var secretSantaListSchema = new Schema({
-        _id: ObjectId,
+        // _id: ObjectId,
         isGenerated: Boolean,
         secretSantas: [secretSantaSchema],
         secretSantaPairings: [secretSantaPairingsSchema]
 
     });
 
-    var secretSantaSchema = new Schema({
-        _id: ObjectId,
-        name: { type: String, required: true },
-        email: { type: String, required: true, unique: true}
-    });
-
-    var secretSantaPairingsSchema = new Schema({
-        _id: ObjectId,
-        senderId: { type: ObjectId, required: true },
-        receiverId: { type: ObjectId, required: true }
+    var facilitatorSchema = new Schema({
+        name: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        secretSantaLists: [secretSantaListSchema]
     });
 
     // define model =================
-    var SecretSantaDb = mongoose.model('facilitator', facilitatorSchema);
+    var facilitator = mongoose.model('facilitator', facilitatorSchema);
 
     // listen (start app with node server.js) ======================================
     app.listen(8080);
@@ -85,13 +108,45 @@
 
         // Check that the facilitator does not already exist.
 
-        var 
+        var query = facilitator.find({
+            email: req.body.email
+        });
+        query.select('email');
+        query.exec(function(err, foundFacilitator) {
+            var response = {
+                status: -1,
+                message: "Facilitator with that email already exists."
+            };
 
+            if (err) {
+                // Create the facilitator
+                response.message = "Database error: " + err;
+                res.send(response);
+            } 
 
-        var json = {
-            status: 0
-        };
-        res.send(json);
+            if (foundFacilitator.length > 0) {
+                response.message = "Facilitator with that email already exists.";
+                res.send(response);                
+            }
+
+            var newFacilitator = new facilitator();
+            newFacilitator.email = req.body.email;
+            newFacilitator.name = req.body.name;
+
+            newFacilitator.save(function(error, data) {
+                if (error) {
+                    response.message = "Database error: " + error;
+                    res.send(response);                    
+                }
+
+                response.status = 0;
+                response.message = "Facilitator created";
+
+                res.send(response);                
+            });
+
+        });
+
         // SecretSantaDb.find(function(error, ))
 
         // // create a todo, information comes from AJAX request from Angular
