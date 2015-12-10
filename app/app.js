@@ -4,7 +4,7 @@ angular.module('ssCommon', []);
 angular.module('ssLayout', []);
 angular.module('ssFacilitator', []);
 angular.module('ssSecretSanta', []);
-angular.module('ssDataAccessLayer', [])
+angular.module('ssDataAccessLayer', []);
 
 var secretSantaApp = angular
     .module('secretSantaApp', [
@@ -26,16 +26,18 @@ var secretSantaApp = angular
                         template: '<ss-main-menu></ss-main-menu>'
                     })
                     .state('createSecretSantaList', {
-                        url: '/createSecretSantaList',
-                        template: '<ss-list-of-secret-santas mode="create"></ss-list-of-secret-santas>'
+                        url: '/createSecretSantaList/:facilitatorId',
+                        template: function(params) {
+                            return '<ss-list-of-secret-santas mode="create" facilitator-id="' + params.facilitatorId + '"></ss-list-of-secret-santas>';
+                        }
                     })
                     .state('facilitator', {
                         abstract: true,
                         url: '/facilitator',
-                        
+
                         // Note: abstract still needs a ui-view for its children to populate.
                         // You can simply add it inline here.
-                        
+
                         template: '<ui-view/>'
                     })
                     .state('facilitator.register', {
@@ -43,8 +45,13 @@ var secretSantaApp = angular
                         template: '<ss-register-facilitator></ss-register-facilitator>'
                     })
                     .state('facilitator.manager', {
-                        url: '/manage',
-                        template: '<ss-facilitator-menu></ss-facilitator-menu>'
+                        url: '/manage/:id',
+                        template: function(params) {
+
+                            // NOTE: A cool way to inject params into the template html
+
+                            return '<ss-facilitator-menu facilitator-id="' + params.id + '"></ss-facilitator-menu>';
+                        }
                     });
             }
         ]);

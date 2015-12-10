@@ -5,6 +5,7 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['ssListOfSecr
         return {
             scope: {
                 //secretSantaList: "="
+                facilitatorId: "@",
                 mode: "="
             },
             templateUrl: 'secretSanta/listOfSecretSantas.html',
