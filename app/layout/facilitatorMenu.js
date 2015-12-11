@@ -11,14 +11,14 @@ angular.module('ssLayout').directive('ssFacilitatorMenu', ['$state', 'ssMenuOpti
 				var createSecretSantaList =
                     menuOptionModel.create(
                         function() {
-                            $state.go('createSecretSantaList', { facilitatorId: $scope.facilitatorId });
+                            $state.go('secretSantaList.create', { facilitatorId: $scope.facilitatorId });
                         },
-                        "Create New Secret Santa Lists");
+                        "Create New Secret Santa List");
 
                 var manageSecretSantaList =
                     menuOptionModel.create(
                         function() {
-                            $state.go('manageSecretSantaList', { facilitatorId: $scope.facilitatorId });
+                            $state.go('facilitator.manageLists', { facilitatorId: $scope.facilitatorId });
                         },
                         "Manage Secret Santa Lists");
 

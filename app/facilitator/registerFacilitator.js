@@ -13,13 +13,12 @@ angular.module('ssFacilitator').directive('ssRegisterFacilitator', ['$state', 's
 
                     var success = function(response) {
                         if (!_.isUndefined(response) && response.status == 0) {
-                        	console.log(response);
-                            $state.go('facilitator.manager', { id: response.data._id });
+                            $state.go('facilitator.manage', { id: response.data._id });
                         }
                     };
 
                     var error = function(response) {
-	                    // TODO: set error if this is not the case.
+	                    // TODO: 
 	                    console.log(response);
                     };
 
