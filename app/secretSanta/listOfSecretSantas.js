@@ -11,8 +11,10 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
             templateUrl: 'secretSanta/listOfSecretSantas.html',
             link: function($scope) {
                 $scope.generateConfirmMessage = "Once you click generate you will not be able to edit the secret santa list. Are you sure you wish to continue?";
-                $scope.facilitator = getFacilitator();
+                var facilitator = getFacilitator();
                 $scope.secretSantaList = listOfSecretSantasService.create();
+
+                $scope.actionButtonsEnabled = !_.isUndefined($scope.facilitator);
 
                 // initialise the dirty flag to true if we've just created this list.
 
@@ -56,11 +58,18 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
                 };
 
                 function getFacilitator() {
-                    ssFacilitatorRepository.getFacilitator($scope.facilitatorId).then(
-                        function() {
-                            
-                        }
-                        );
+                    var success = function(response) {
+                        return response.data._id;
+                    };
+
+                    var error = function(response) {
+                        // TODO:
+
+                        console.log(response);
+                        return;
+                    };
+
+                    ssFacilitatorRepository.getFacilitator($scope.facilitatorId).then(success, error);
                 }
             }
         };

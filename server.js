@@ -152,34 +152,37 @@ app.post('/ss-api/facilitator/delete', function(req, res) {
     });
 });
 
-app.post('/ss-api/facilitator/get', function(req, res) {
+app.post('/ss-api/facilitator/retrieve', function(req, res) {    
     facilitator.findOne({
-        _id: ObjectId(req.body.facilitatorId)
+        _id: req.body.facilitatorId
     },
     function(err, facilitatorItem) {
         if (err) {
+            console.log(err)
             res.send(err);
             return;
         }
 
         var response = {
-            status = 0,
-            data = facilitatorItem
-        };
+            status: 0,
+            data: facilitatorItem
+        };       
 
         res.send(response);
     });
 });
 
-app.post('/ss-api/facilitator/saveList', function(req, res) {
+app.post('/ss-api/facilitator/saveList', function(req, res) {    
     facilitator.findOne({
-            _id: ObjectId(req.body.details.facilitatorId)
+            _id: req.body.details.facilitatorId
         },
         function(err, facilitatorItem) {
             if (err) {
                 res.send(err);
                 return;
             }
+
+            console.log(JSON.stringify(facilitatorItem));
 
             var secretSantaList = req.body.details.secretSantaList;
 
