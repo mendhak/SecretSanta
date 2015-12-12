@@ -5,6 +5,8 @@ var mongoose = require('mongoose'); // mongoose for mongodb
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var moment = require('moment');
+var underscore = require('underscore');
 
 // configuration =================
 
@@ -86,19 +88,6 @@ app.get('/', function(req, res) {
 // routes ======================================================================
 
 // api ---------------------------------------------------------------------
-// get all todos
-// app.get('/api/todos', function(req, res) {
-
-//     // use mongoose to get all todos in the database
-//     Todo.find(function(err, todos) {
-
-//         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-//         if (err)
-//             res.send(err);
-
-//         res.json(todos); // return all todos in JSON format
-//     });
-// });
 
 // 
 app.post('/ss-api/facilitator/create', function(req, res) {
@@ -161,4 +150,67 @@ app.post('/ss-api/facilitator/delete', function(req, res) {
 
         res.send(response);
     });
+});
+
+app.post('/ss-api/facilitator/get', function(req, res) {
+    facilitator.findOne({
+        _id: ObjectId(req.body.facilitatorId)
+    },
+    function(err, facilitatorItem) {
+        if (err) {
+            res.send(err);
+            return;
+        }
+
+        var response = {
+            status = 0,
+            data = facilitatorItem
+        };
+
+        res.send(response);
+    });
+});
+
+app.post('/ss-api/facilitator/saveList', function(req, res) {
+    facilitator.findOne({
+            _id: ObjectId(req.body.details.facilitatorId)
+        },
+        function(err, facilitatorItem) {
+            if (err) {
+                res.send(err);
+                return;
+            }
+
+            var secretSantaList = req.body.details.secretSantaList;
+
+            var currentDateTime = moment.utc().format();
+            secretSantaList.dateCreated = currentDateTime;
+
+            facilitatorItem.secretSantaLists.add(secretSantaList);
+
+            facilitatorItem.save(function(error, data) {
+                var response = {
+                    status: -1
+                };
+
+                if (error) {
+                    res.send(response);
+
+                    // TODO: log/show error?
+
+                    return;
+                }
+
+                var insertedSecretSantaList = underscore.find(data.secretSantaLists, function(item) {
+                    return item.dateCreated === currentDateTime;
+                });
+
+                response = {
+                    data: insertedSecretSantaList._id,
+                    status: 0
+                };
+
+                res.send(response);
+            });
+        });
 });

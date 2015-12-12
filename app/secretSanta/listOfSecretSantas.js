@@ -56,7 +56,11 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
                 };
 
                 function getFacilitator() {
-                    return ssFacilitatorRepository.getFacilitator($scope.facilitatorId);
+                    ssFacilitatorRepository.getFacilitator($scope.facilitatorId).then(
+                        function() {
+                            
+                        }
+                        );
                 }
             }
         };
