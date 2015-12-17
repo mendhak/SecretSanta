@@ -18,12 +18,14 @@
   "homepage": "https://github.com/slowmonkey/SecretSanta#readme",
   "dependencies": {
     "angular-ui-router": "^0.2.15",
+    "bluebird": "^3.1.0",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "method-override": "^2.3.5",
     "moment": "^2.10.6",
     "mongoose": "^4.3.1",
     "morgan": "^1.6.1",
+    "tracer": "^0.8.2",
     "underscore": "^1.8.3"
   }
 }

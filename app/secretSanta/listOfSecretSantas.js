@@ -11,10 +11,14 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
             templateUrl: 'secretSanta/listOfSecretSantas.html',
             link: function($scope) {
                 $scope.generateConfirmMessage = "Once you click generate you will not be able to edit the secret santa list. Are you sure you wish to continue?";
-                var facilitator = getFacilitator();
-                $scope.secretSantaList = listOfSecretSantasService.create();
 
-                $scope.actionButtonsEnabled = !_.isUndefined($scope.facilitator);
+                $scope.secretSantaList = listOfSecretSantasService.create();
+                if (mode === "edit") {
+                    $scope.secretSantaList = 
+                }
+                
+
+                getFacilitator();
 
                 // initialise the dirty flag to true if we've just created this list.
 
@@ -57,9 +61,14 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
                     $scope.isDirty = true;
                 };
 
+                function updateActionButtonDisabledState() {
+                    $scope.actionButtonsDisabled = _.isUndefined($scope.facilitator);
+                }
+
                 function getFacilitator() {
                     var success = function(response) {
-                        return response.data._id;
+                        $scope.facilitator = response.data;
+                        updateActionButtonDisabledState();
                     };
 
                     var error = function(response) {

@@ -41,7 +41,7 @@ var secretSantaApp = angular
                         }
                     })
                     .state('secretSantaList.manage', {
-                        url: 'manageSecretSantaList/:facilitatorId/:listId',
+                        url: '/manageSecretSantaList/:facilitatorId/:listId',
                         template: function(params) {
                             return '<ss-list-of-secret-santas mode="edit" facilitator-id="' + params.facilitatorId + '" list-id="' + params.listId + '"></ss-list-of-secret-santas>';
                         }
