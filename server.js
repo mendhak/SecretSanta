@@ -46,14 +46,16 @@ var logger = require('tracer').colorConsole();
 app.post('/ss-api/facilitator/create', function(req, res) {
 
     // Check that the facilitator does not already exist.
-
     Facilitator.findByEmail(req.body.email)
         .then(function(facilitators) {
-            if (underscore.isNull(facilitator) || facilitators.length === 0) {
+            if (underscore.isNull(facilitators) || facilitators.length == 0) {
                 // Create a new facilitator
+
+                logger.debug("create a new facilitator");
 
                 return Facilitator.create(req.body);
             } else {
+                logger.debug("Facilitator with that email already exists.");
                 res.send({
                     message: "Facilitator with that email already exists.",
                     status: -1
@@ -61,6 +63,7 @@ app.post('/ss-api/facilitator/create', function(req, res) {
             }
         })
         .then(function(newFacilitator) {
+            console.log(newFacilitator);
             if (!underscore.isUndefined(newFacilitator)) {
                 res.send({
                     data: newFacilitator,
@@ -75,8 +78,8 @@ app.post('/ss-api/facilitator/create', function(req, res) {
         .done();
 });
 
-app.get('/ss-api/facilitator/get', function(req, res) {
-    Facilitator.findById(req.body.facilitatorId)
+app.get('/ss-api/facilitator/get', function(req, res) {    
+    Facilitator.findById(req.query.facilitatorId)
         .then(function(facilitators) {
             if (facilitators.length === 0) {
                 throw new Error("Facilitator does not exist");
@@ -94,6 +97,10 @@ app.get('/ss-api/facilitator/get', function(req, res) {
 });
 
 app.post('/ss-api/facilitator/saveList', function(req, res) {
+    SecretSantaList.save(req.body)
+        .then(function(secretSantaList) {
+
+        })
 });
 
 

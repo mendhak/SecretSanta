@@ -36,7 +36,7 @@ angular.module('ssDataAccessLayer').factory('ssFacilitatorRepository', ['$http',
                 }
             };
 
-            $http.get(url, details).then(success, error);
+            $http.get(url, {params: details}).then(success, error);
             return deferred.promise;
         }
 
@@ -49,7 +49,7 @@ angular.module('ssDataAccessLayer').factory('ssFacilitatorRepository', ['$http',
                 var data = {
                     facilitatorId: facilitatorId
                 }
-                return post('/ss-api/facilitator/get', data);
+                return get('/ss-api/facilitator/get', data);
             },
             saveList: function(facilitatorId, secretSantaList) {
                 var details = {

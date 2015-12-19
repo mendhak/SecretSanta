@@ -13,11 +13,10 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
                 $scope.generateConfirmMessage = "Once you click generate you will not be able to edit the secret santa list. Are you sure you wish to continue?";
 
                 $scope.secretSantaList = listOfSecretSantasService.create();
-                if (mode === "edit") {
-                    $scope.secretSantaList = 
+                if ($scope.mode === "edit") {
+                    // $scope.secretSantaList = 
                 }
                 
-
                 getFacilitator();
 
                 // initialise the dirty flag to true if we've just created this list.
@@ -54,7 +53,7 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
                 };
 
                 $scope.generate = function() {
-
+                    console.log("$scope.listname: " + $scope.listname);
                 };
 
                 $scope.change = function() {
