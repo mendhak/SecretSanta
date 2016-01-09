@@ -4,6 +4,7 @@ angular.module('ssCommon', []);
 angular.module('ssLayout', []);
 angular.module('ssFacilitator', []);
 angular.module('ssSecretSanta', []);
+angular.module('ssSecretSantaList', []);
 angular.module('ssDataAccessLayer', []);
 
 var secretSantaApp = angular

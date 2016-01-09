@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ssLayout').factory('ssFacilitatorModel', function() {
+angular.module('ssFacilitator').factory('ssFacilitatorModel', function() {
 	function Facilitator() {
 		this.name = "";
 		this.email = "";

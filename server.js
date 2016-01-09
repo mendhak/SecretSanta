@@ -25,8 +25,8 @@ mongoose.connect('mongodb://localhost/SecretSantaDb'); // connect to mongoDB dat
 
 // models ========================
 
-
 var Facilitator = require('./server/models/facilitator');
+var SecretSantaList = require('./server/models/secretSantaList');
 
 
 // listen (start app with node server.js) ======================================
@@ -35,7 +35,8 @@ console.log("App listening on port 8080");
 
 // application -------------------------------------------------------------
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/app/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    // load the single view file (angular will handle the page changes on the front-end)
+    res.sendFile(__dirname + '/app/index.html'); 
 });
 
 // routes ======================================================================
@@ -97,7 +98,8 @@ app.get('/ss-api/facilitator/get', function(req, res) {
 });
 
 app.post('/ss-api/facilitator/saveList', function(req, res) {
-    SecretSantaList.save(req.body)
+    logger.debug("req.body: " + JSON.stringify(req.body));
+    SecretSantaList.save(req.body.secretSantaList)
         .then(function(secretSantaList) {
 
         })

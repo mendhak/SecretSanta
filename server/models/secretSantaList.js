@@ -27,3 +27,9 @@ var create = function(details) {
 
 	return newSecretSantaList.save();
 };
+
+// --------------------------
+
+SecretSantaList.create = create;
+
+module.exports = SecretSantaList;

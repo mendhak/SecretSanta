@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('ssSecretSanta').factory('ssListOfSecretSantasService', function() {
-    function SecretSantaList() {
+    function SecretSantaList(name) {
+        this.name = "";
         this.list = [];
     }
 
