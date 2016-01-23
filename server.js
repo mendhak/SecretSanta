@@ -1,12 +1,39 @@
 // set up ========================
 var express = require('express');
-var app = express(); // create our app w/ express
+var expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose'); // mongoose for mongodb
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var moment = require('moment');
 var underscore = require('underscore');
+
+var fileSystem = require('fs');
+var http = require('http');
+var https = require('https');
+
+var key = fileSystem.readFileSync('./configuration/key.pem')
+var certificate = fileSystem.readFileSync('./configuration/certificate.pem')
+
+var https_options = {
+    key: key,
+    certificate: certificate
+};
+var PORT = 8000;
+var HOST = 'localhost';
+
+var secret = 'top secret';
+var app = express(); // create our app w/ express
+
+app.configure(function() {
+    app.use(app.router);
+});
+
+server = https.createServer(https_options, app).listen(PORT, HOST);
+console.log('HTTPS Server listening on %s:%s', HOST, PORT);
+
+app.use('/ss-api', expressJwt({secret: secret}));
 
 app.use(express.static(__dirname + '/app')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
@@ -43,6 +70,34 @@ app.get('/', function(req, res) {
 
 // api ---------------------------------------------------------------------
 var logger = require('tracer').colorConsole();
+
+function validateLogin(username, password) {
+    // TODO: Validate username and password
+    return true;
+}
+
+function getFacilitator(username, password) {
+    return  {
+        id: 1,
+        name: '',
+        email: ''
+    };
+}
+
+app.post('/authenticate', function(req, res) {
+    if (validateLogin(req.body.username, req.body.password)) {
+        res.send(401, 'Invalid username or password');
+        return;
+    }
+
+    // Get the user details from the database.
+    var  profile = getFacilitator(username, password);
+
+    var token = jwt.sign(profile, secret, { expiresInMinutes: 60*10 });
+
+    res.json({ token: token });
+});
+
 // 
 app.post('/ss-api/facilitator/create', function(req, res) {
 
@@ -74,7 +129,7 @@ app.post('/ss-api/facilitator/create', function(req, res) {
             }
         })
         .catch(function(error) {
-            logger.debug("catch:" + JSON.stringify(error));
+            logger.debug("catch: " + JSON.stringify(error));
         })
         .done();
 });
@@ -97,12 +152,41 @@ app.get('/ss-api/facilitator/get', function(req, res) {
         .done();
 });
 
+app.post('/ss-api/facilitator/createList', function(req, res) {
+    logger.debug("req.body: " + JSON.stringify(req.body));
+
+    var facilitatorId = req.body.facilitatorId;
+    var secretSantaList = req.body.secretSantaList;
+
+    SecretSantaList.create(secretSantaList).then(function(newSecretSantaList) {
+        secretSantaList._id = newSecretSantaList._id;
+        return Facilitator.findById(facilitatorId);
+    })
+    .then(function(facilitator) {
+        facilitator.secretSantaLists.add(secretSantaList._id);
+        facilitator.update();
+        res.send({
+            data: secretSantaList,
+            message: "SecretSantaList created",
+            status: 0
+        })
+    })
+    .catch(function(error) {
+        logger.debug("catch: " + JSON.stringify(error));
+    })
+    .done();
+});
+
 app.post('/ss-api/facilitator/saveList', function(req, res) {
     logger.debug("req.body: " + JSON.stringify(req.body));
-    SecretSantaList.save(req.body.secretSantaList)
-        .then(function(secretSantaList) {
 
-        })
+    var facilitatorId = req.body.facilitatorId;
+    var secretSantaList = req.body.secretSantaList;
+
+    // Create/Save the secret santa list object
+    if (_.isUndefined(secretSantaList._id)) {
+
+    }
 });
 
 

@@ -49,7 +49,7 @@ angular.module('ssSecretSanta').directive('ssListOfSecretSantas', ['$state', 'ss
                         console.log(response);
                     };
 
-                    ssFacilitatorRepository.saveList($scope.facilitatorId, $scope.secretSantaList).then(success, error);
+                    ssFacilitatorRepository.createList($scope.facilitatorId, $scope.secretSantaList).then(success, error);
                 };
 
                 $scope.generate = function() {

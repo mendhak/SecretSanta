@@ -1,5 +1,5 @@
 <div class="register-facilitator-container">
-    <form id="facilitatorForm" name="facilitatorForm" class="facilitator-form container">
+    <form id="facilitatorForm" name="facilitatorForm" class="facilitator-form container" ng-submit="create()">
         <div class="form-group col-md-offset-4 col-md-4 row">
             <label for="facilitatorName" class="sr-only">Name</label>
             <input id="facilitatorName" class="form-control" type="text" ng-model="form.name" placeholder="Name" required>
@@ -8,9 +8,17 @@
             <label for="facilitatorEmail" class="sr-only">Email</label>
             <input id="facilitatorEmail" class="form-control" type="text" ng-model="form.email" placeholder="Email">
         </div>
+        <div class="form-group col-md-offset-4 col-md-4 row">
+            <label for="facilitatorPassword" class="sr-only">Password</label>
+            <input id="facilitatorPassword" class="form-control" type="password" ng-model="form.password" placeholder="Password">
+        </div>
+        <div class="form-group col-md-offset-4 col-md-4 row">
+            <label for="facilitatorConfirmPassword" class="sr-only">Confirm Password</label>
+            <input id="facilitatorConfirmPassword" class="form-control" type="password" ng-model="form.confirmPassword" placeholder="Confirm Password">
+        </div>
         <div class="col-md-offset-5 col-md-4 row">
-            <button type="cancel" class="btn btn-default" ng-click="cancel()">Cancel</button>
-            <button type="submit" class="btn btn-primary" ng-click="create()">Create</button>
+            <button type="cancel" class="btn" ng-click="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-default" ng-click="create()">Create</button>
         </div>
     </form>
 </div>

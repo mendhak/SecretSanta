@@ -26,27 +26,27 @@ var secretSantaApp = angular
                         url: '/',
                         template: '<ss-main-menu></ss-main-menu>'
                     })
-                    .state('secretSantaList', {
-                        abstract: true,
-                        url: '/secretSantaList',
+                    // .state('secretSantaList', {
+                    //     abstract: true,
+                    //     url: '/secretSantaList',
 
-                        // Note: abstract still needs a ui-view for its children to populate.
-                        // You can simply add it inline here.
+                    //     // Note: abstract still needs a ui-view for its children to populate.
+                    //     // You can simply add it inline here.
 
-                        template: '<ui-view/>'
-                    })
-                    .state('secretSantaList.create', {
-                        url: '/createSecretSantaList/:facilitatorId',
-                        template: function(params) {
-                            return '<ss-list-of-secret-santas mode="create" facilitator-id="' + params.facilitatorId + '"></ss-list-of-secret-santas>';
-                        }
-                    })
-                    .state('secretSantaList.manage', {
-                        url: '/manageSecretSantaList/:facilitatorId/:listId',
-                        template: function(params) {
-                            return '<ss-list-of-secret-santas mode="edit" facilitator-id="' + params.facilitatorId + '" list-id="' + params.listId + '"></ss-list-of-secret-santas>';
-                        }
-                    })
+                    //     template: '<ui-view/>'
+                    // })
+                    // .state('secretSantaList.create', {
+                    //     url: '/createSecretSantaList/:facilitatorId',
+                    //     template: function(params) {
+                    //         return '<ss-list-of-secret-santas mode="create" facilitator-id="' + params.facilitatorId + '"></ss-list-of-secret-santas>';
+                    //     }
+                    // })
+                    // .state('secretSantaList.manage', {
+                    //     url: '/manageSecretSantaList/:facilitatorId/:listId',
+                    //     template: function(params) {
+                    //         return '<ss-list-of-secret-santas mode="edit" facilitator-id="' + params.facilitatorId + '" list-id="' + params.listId + '"></ss-list-of-secret-santas>';
+                    //     }
+                    // })
                     .state('facilitator', {
                         abstract: true,
                         url: '/facilitator',

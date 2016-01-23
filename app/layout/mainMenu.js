@@ -5,31 +5,31 @@ angular.module('ssLayout').directive('ssMainMenu', ['$state', 'ssMenuOptionModel
         return {
             templateUrl: 'layout/menu.html',
             link: function($scope) {
-                var registerFacilitator =
+                var facilitatorRegistration =
                     menuOptionModel.create(
                         function() {
                             $state.go('facilitator.register');
                         },
-                        "Register As A Facilitator");
+                        "Register A New Facilitator");
 
-                var manageFacilitatorDetails =
+                var facilitatorLogin =
                     menuOptionModel.create(
                         function() {
-                            $state.go('facilitator.manage');
+                            $state.go('facilitator.login');
                         },
-                        "Manage Facilitator Details");
+                        "Login In As A Facilitator");
 
-                var viewSecretSantaDetails =
+                var secretSantaLogin =
                     menuOptionModel.create(
                         function() {
-                            $state.go('viewSecretSantaDetails');
+                            $state.go('secretsanta.login');
                         },
-                        "View My Secret Santa Details");
+                        "Login In As A Secret Santa");
 
                 $scope.menuOptions = [
-                    registerFacilitator,
-                    manageFacilitatorDetails,
-                    viewSecretSantaDetails
+                    facilitatorRegistration,
+                    facilitatorLogin,
+                    secretSantaLogin
                 ];
             }
         };

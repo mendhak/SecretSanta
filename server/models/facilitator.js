@@ -15,7 +15,7 @@ var FacilitatorSchema = new Schema({
         type: String,
         required: true
     },
-    secretSantaLists: [ObjectId]
+    secretSantaLists: [{type: ObjectId}]
 });
 
 var Facilitator = mongoose.model('Facilitator', FacilitatorSchema);
