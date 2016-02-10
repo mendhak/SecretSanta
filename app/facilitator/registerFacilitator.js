@@ -3,7 +3,7 @@
 angular.module('ssFacilitator').directive('ssRegisterFacilitator', ['$state', 'ssFacilitatorModel', 'ssFacilitatorRepository',
     function($state, facilitatorModel, facilitatorRepository) {
         return {
-            templateUrl: 'facilitator/registerFacilitator.html',
+            templateUrl: './facilitator/registerFacilitator.html',
             link: function($scope) {
                 $scope.create = function() {
                     var facilitator = facilitatorModel.create();

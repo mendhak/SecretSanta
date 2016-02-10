@@ -43,13 +43,13 @@ angular.module('ssDataAccessLayer').factory('ssFacilitatorRepository', ['$http',
 
         return {
             createFacilitator: function(facilitatorDetails) {
-                return post('/ss-api/facilitator/create', facilitatorDetails);
+                return post('/ss-api/facilitator/', facilitatorDetails);
             },
             getFacilitator: function(facilitatorId) {
                 var data = {
                     facilitatorId: facilitatorId
                 }
-                return get('/ss-api/facilitator/get', data);
+                return get('/ss-api/facilitator/', data);
             },
             saveList: function(facilitatorId, secretSantaList) {
                 var details = {

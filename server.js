@@ -63,39 +63,6 @@ redirectApp.use(function requireHTTPS(req, res, next) {
 redirectServer.listen(8080);
 
 
-// app.listen(8080);
-// console.log("App listening on port 8080");
-
-// application -------------------------------------------------------------
-app.get('/home', function(req, res) {
-    // load the single view file (angular will handle the page changes on the front-end)
-    res.sendFile(__dirname + '/app/index.html'); 
-});
-
-// routes ======================================================================
-// var router = express.Router();
-
-// router.route('/').get(function(req, res) {
-//     console.log("get '/'");
-//     res.header('Content-type', 'text/html');
-//       return res.end('<h1>Hello, Secure World!</h1>');
-//     // res.sendFile(__dirname + '/app/index.html');  
-// });
-
-// app.use('/', router);
-
-// app.get('/', function(req, res) {
-//     console.log("get '/'");
-//     res.header('Content-type', 'text/html');
-//     res.sendFile(__dirname + '/app/index.html');  
-// });
-
-// module.exports = router;
-
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /ss-api
-// app.use('/ss-api', router);
-
 // listen (start app with node server.js) ======================================
 
 var privateKey = fileSystem.readFileSync('./server/configuration/ssl/secretsanta.key', 'utf8');
@@ -111,6 +78,15 @@ var securePort = 443;
 httpsServer.listen(securePort, function() {
     console.log('Secured HTTPS Server listening on localhost:%s', securePort);
 });
+
+
+// REGISTER OUR ROUTES -------------------------------
+// NOTE: Don't  need to set up the '/' route as this is defaulted via the static files
+// all of our routes will be prefixed with /ss-api
+
+var facilitator = require('./server/routes/facilitator');
+
+app.use('/ss-api', facilitator);
 
 
 
