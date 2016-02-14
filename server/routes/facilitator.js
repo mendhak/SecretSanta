@@ -1,6 +1,9 @@
 var Facilitator = require('../models/facilitator');
 var express = require('express');
 var router = express.Router();
+var logger = require('tracer').colorConsole();
+var _ = require('underscore');
+
 
 // Get a facilitator by Id
 
@@ -28,7 +31,7 @@ router.route('/facilitator/:facilitatorId').get(function(req, res) {
 router.route('/facilitator').post(function(req, res) {
     Facilitator.findByEmail(req.body.email)
         .then(function(facilitators) {
-            if (underscore.isNull(facilitators) || facilitators.length == 0) {
+            if (_.isNull(facilitators) || facilitators.length == 0) {
                 // Create a new facilitator
 
                 logger.debug("create a new facilitator");
@@ -44,7 +47,7 @@ router.route('/facilitator').post(function(req, res) {
         })
         .then(function(newFacilitator) {
             console.log(newFacilitator);
-            if (!underscore.isUndefined(newFacilitator)) {
+            if (!_.isUndefined(newFacilitator)) {
                 res.send({
                     data: newFacilitator,
                     message: "Facilitator created",
