@@ -1,4 +1,5 @@
-var Facilitator = require('../models/facilitator');
+// var Facilitator = require('../models/facilitator');
+ var SecretSantaList = require('./server/models/secretSantaList');
 var express = require('express');
 var router = express.Router();
 var logger = require('tracer').colorConsole();

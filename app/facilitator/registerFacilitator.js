@@ -12,6 +12,7 @@ angular.module('ssFacilitator').directive('ssRegisterFacilitator', ['$state', 's
                     facilitator.email = $scope.form.email;
 
                     var success = function(response) {
+                        debugger;
                         if (!_.isUndefined(response) && response.status == 0) {
                             $state.go('facilitator.manage', { id: response.data._id });
                         }

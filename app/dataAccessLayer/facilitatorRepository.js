@@ -3,22 +3,22 @@
 angular.module('ssDataAccessLayer').factory('ssFacilitatorRepository', ['$http', '$q',
     function($http, $q) {
         function post(url, details, errorMessage) {
-            var deferred = $q.defer();
+            // var deferred = $q.defer();
 
-            var success = function(response) {
-                deferred.resolve(response.data);
-            };
+            // var success = function(response) {
+            //     deferred.resolve(response.data);
+            // };
 
-            var error = function(response) {
-                if (!_.isUndefined(errorMessage)) {
-                    // TODO:
+            // var error = function(response) {
+            //     if (!_.isUndefined(errorMessage)) {
+            //         // TODO:
 
-                    console.log(errorMessage + ": " + JSON.stringify(response));
-                }
-            };
+            //         console.log(errorMessage + ": " + JSON.stringify(response));
+            //     }
+            // };
 
-            $http.post(url, details).then(success, error);
-            return deferred.promise;
+            return $http.post(url, details);//.then(success, error);
+            // return deferred.promise;
         }
 
         function get(url, details, errorMessage) {

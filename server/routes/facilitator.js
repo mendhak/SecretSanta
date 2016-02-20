@@ -31,6 +31,7 @@ router.route('/facilitator/:facilitatorId').get(function(req, res) {
 router.route('/facilitator').post(function(req, res) {
     Facilitator.findByEmail(req.body.email)
         .then(function(facilitators) {
+        	console.log("facilitator: " + JSON.stringify(facilitators));
             if (_.isNull(facilitators) || facilitators.length == 0) {
                 // Create a new facilitator
 
@@ -46,6 +47,7 @@ router.route('/facilitator').post(function(req, res) {
             }
         })
         .then(function(newFacilitator) {
+        	console.log('creating a new facilitator');
             console.log(newFacilitator);
             if (!_.isUndefined(newFacilitator)) {
                 res.send({
