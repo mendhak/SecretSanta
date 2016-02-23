@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start test/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -17,17 +17,17 @@
   },
   "homepage": "https://github.com/slowmonkey/SecretSanta#readme",
   "dependencies": {
-    "angular-ui-router": "^0.2.15",
-    "bluebird": "^3.1.0",
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
+    "angular-ui-router": "^0.2.18",
+    "bluebird": "^3.3.1",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
     "express-jwt": "^3.3.0",
-    "jsonwebtoken": "^5.5.4",
+    "jsonwebtoken": "^5.7.0",
     "method-override": "^2.3.5",
-    "moment": "^2.10.6",
-    "mongoose": "^4.3.1",
-    "morgan": "^1.6.1",
-    "tracer": "^0.8.2",
+    "moment": "^2.11.2",
+    "mongoose": "^4.4.4",
+    "morgan": "^1.7.0",
+    "tracer": "^0.8.3",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
