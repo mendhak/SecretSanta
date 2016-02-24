@@ -5,11 +5,7 @@
 1. Install nodejs (version 4.3.1) from https://nodejs.org/en/
 1. Install the following to the global npm cache
   1. bower
-  1. express-generator
   1. gulp
-  1. jshint
-  1. mean-cli
-  1. node-inspector
   1. nodemon
 1. Clone this project into a directory
 1. Change into the directory
