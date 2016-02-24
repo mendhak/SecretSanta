@@ -15,6 +15,10 @@
 ## How to run
 1. In a shell run `mongo --dbpath "db location"`
 1. In another shell on the project directory run `nodemon` (This will automatically run the server.js) or run `node server.js`
+1. Navigate to localhost:8080 on a chrome browser to run the application.
+
+## How to test
+1. Run `npm test` to execute the karma test.
 
 ## How to create a mean project from scratch
 Still to come...
