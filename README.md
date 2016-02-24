@@ -9,12 +9,12 @@
   1. nodemon
 1. Clone this project into a directory
 1. Change into the directory
-1. Run npm install
-1. Run bower install
+1. Run `npm install`
+1. Run `bower install`
 
 ## How to run
-1. In a shell run mongo --dbpath "db location"
-1. In another shell on the project directory run "nodemon" (This will automatically run the server.js) or run "node server.js"
+1. In a shell run `mongo --dbpath "db location"`
+1. In another shell on the project directory run `nodemon` (This will automatically run the server.js) or run `node server.js`
 
 ## How to create a mean project from scratch
 Still to come...
