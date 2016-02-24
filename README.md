@@ -17,7 +17,7 @@
 1. Run bower install
 
 ## How to run
-1. In a shell run mongo --dbpath "<db location>"
+1. In a shell run mongo --dbpath "db location"
 1. In another shell on the project directory run "nodemon" (This will automatically run the server.js) or run "node server.js"
 
 ## How to create a mean project from scratch
