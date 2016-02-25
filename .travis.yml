@@ -6,8 +6,8 @@ node_js:
   - "0.12.0"
 
 before_install:
-  npm install
-  ./node_modules/.bin/bower install
+  - npm install
+  - ./node_modules/.bin/bower install
 
 script:
   - npm test
