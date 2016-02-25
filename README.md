@@ -1,4 +1,4 @@
-# SecretSanta
+# SecretSanta  [![Build Status](https://travis-ci.org/slowmonkey/SecretSanta.svg?branch=master)](https://travis-ci.org/slowmonkey/SecretSanta)
 
 ## How to build
 
