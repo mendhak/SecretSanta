@@ -10,7 +10,7 @@ before_install:
   - ./node_modules/.bin/bower install
 
 script:
-  - npm test
+  - npm test  # In the future, this can be grunt or gulp commands
 
 #services:
 #  - mongodb
